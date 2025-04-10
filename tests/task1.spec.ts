@@ -1,8 +1,8 @@
 import { expect, test, Page } from "@playwright/test";
-const mainUrl: string = "https://www.saucedemo.com/";
+// const mainUrl: string = "https://www.saucedemo.com/";
 
 async function login(page: Page, userName: string, passWord: string) {
-  await page.goto(mainUrl);
+  await page.goto('/');
   await page.locator('[id="user-name"]').fill(userName);
   await page.locator('[id="password"]').fill(passWord);
   await page.locator('[id="login-button"]').click();
