@@ -1,27 +1,26 @@
-import { expect, test, Page } from "@playwright/test";
+import { test, expect } from '@playwright/test';
+import { LoginVerifications } from '../Pages/login.spec.ts';
 
-async function login(page: Page, userName: string, passWord: string) {
-  await page.locator('[id="user-name"]').fill(userName);
-  await page.locator('[id="password"]').fill(passWord);
-  await page.locator('[id="login-button"]').click();
-}
+test.describe('Login Test Cases', () => {
+  let loginPage: LoginVerifications;
 
-test.describe("Login Test Cases", () => {
-  test.beforeEach("Opening ", async ({ page }) => {
-    await page.goto("/");
-  });
-  test("Verify logging in sucessfully", async ({ page }) => {
-    await login(page, "standard_user", "secret_sauce");
-    await expect(page).toHaveURL("/inventory.html");
+  test.beforeEach('Navigate to login page', async ({ page }) => {
+    loginPage = new LoginVerifications(page);
+    await loginPage.goToURL();
   });
 
-  test("Verify invalid login", async ({ page }) => {
-    await login(page, "invalid_user", "invalidPassword");
-    await expect(page.locator("[data-test='error']")).toHaveText(/.*do not match any/);
+  test('Verify logging in successfully', async () => {
+    await loginPage.login('standard_user', 'secret_sauce');
+    await loginPage.validAccount();
   });
 
-  test("Verify locked account logging in", async ({ page }) => {
-    await login(page, "locked_out_user", "secret_sauce");
-    await expect(page.locator("[data-test='error']")).toHaveText(/.*locked out./);
+  test('Verify invalid login', async () => {
+    await loginPage.login('invalid_user', 'invalidPassword');
+    await loginPage.invalidAccount();
+  });
+
+  test('Verify locked account logging in', async () => {
+    await loginPage.login('locked_out_user', 'secret_sauce');
+    await loginPage.lockedAccount();
   });
 });
