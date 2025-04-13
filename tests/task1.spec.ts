@@ -12,7 +12,7 @@ test.describe("Login Test Cases", () => {
   });
   test("Verify logging in sucessfully", async ({ page }) => {
     await login(page, "standard_user", "secret_sauce");
-    await expect(page.locator("[id='react-burger-menu-btn']")).toBeVisible();
+    await expect(page).toHaveURL("/inventory.html");
   });
 
   test("Verify invalid login", async ({ page }) => {
