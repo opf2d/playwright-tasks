@@ -1,10 +1,10 @@
 import { test } from "@playwright/test";
-import { loginVerifications } from "../Pages/login.spec";
-import { productSelection } from "../Pages/products.spec";
-import { cart } from "../Pages/cart.spec";
-import { information } from "../Pages/information.spec";
-import { overview } from "../Pages/overview.spec";
-import { successfulMSG } from "../Pages/complete.spec";
+import { loginVerifications } from "../Pages/login";
+import { productSelection } from "../Pages/products";
+import { cart } from "../Pages/cart";
+import { information } from "../Pages/information";
+import { overview } from "../Pages/overview";
+import { successfulMSG } from "../Pages/complete";
 
 test.describe("Login Test Cases", () => {
   let loginPage: loginVerifications;

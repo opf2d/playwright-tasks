@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { loginVerifications } from '../Pages/login.spec.ts';
+import { loginVerifications } from '../Pages/login.ts';
 
 test.describe('Login Test Cases', () => {
   let loginPage: loginVerifications;
