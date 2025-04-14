@@ -1,24 +1,24 @@
 import { Page, Locator, expect } from "@playwright/test";
 
-export class ProductSelection {
+export class productSelection {
   private readonly page: Page;
-  private readonly FirstItemBTN: Locator;
-  private readonly LastItemBTN: Locator;
-  private readonly Basket: Locator;
+  private readonly firstItemBTN: Locator;
+  private readonly lastItemBTN: Locator;
+  private readonly basket: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.FirstItemBTN = page.locator("#add-to-cart-sauce-labs-backpack");
-    this.LastItemBTN = page.locator("#add-to-cart-test\\.allthethings\\(\\)-t-shirt-\\(red\\)");
-    this.Basket = page.locator(".shopping_cart_link");
+    this.firstItemBTN = page.locator("#add-to-cart-sauce-labs-backpack");
+    this.lastItemBTN = page.locator("#add-to-cart-test\\.allthethings\\(\\)-t-shirt-\\(red\\)");
+    this.basket = page.locator(".shopping_cart_link");
   }
 
-  async AddItem(): Promise<void> {
-    await this.FirstItemBTN.click();
-    await this.LastItemBTN.click();
+  async addItem(): Promise<void> {
+    await this.firstItemBTN.click();
+    await this.lastItemBTN.click();
   }
 
-  async GoToCart(): Promise<void> {
-    await this.Basket.click();
+  async goToCart(): Promise<void> {
+    await this.basket.click();
   }
 }

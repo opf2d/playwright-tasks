@@ -1,27 +1,27 @@
 import { Page, Locator, expect } from "@playwright/test";
 
-export class Information {
+export class information {
   private readonly page: Page;
-  private readonly FirstName: Locator;
-  private readonly LastName: Locator;
-  private readonly ZipCode: Locator;
-  private readonly ContinueBTN: Locator;
+  private readonly firstName: Locator;
+  private readonly lastName: Locator;
+  private readonly zipCode: Locator;
+  private readonly continueBTN: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.FirstName = page.locator("#first-name");
-    this.LastName = page.locator("#last-name");
-    this.ZipCode = page.locator("#postal-code");
-    this.ContinueBTN = page.locator("#continue");
+    this.firstName = page.locator("#first-name");
+    this.lastName = page.locator("#last-name");
+    this.zipCode = page.locator("#postal-code");
+    this.continueBTN = page.locator("#continue");
   }
 
-  async MyInformation(fName: string,lName: string,zCode: number): Promise<void> {
-    await this.FirstName.fill(fName);
-    await this.LastName.fill(lName);
-    await this.ZipCode.fill(zCode.toString());
+  async myInformation(fName: string,lName: string,zCode: number): Promise<void> {
+    await this.firstName.fill(fName);
+    await this.lastName.fill(lName);
+    await this.zipCode.fill(zCode.toString());
   }
 
-  async GoToOverview(): Promise<void> {
-    this.ContinueBTN.click();
+  async goToOverview(): Promise<void> {
+    this.continueBTN.click();
   }
 }

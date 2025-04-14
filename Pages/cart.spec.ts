@@ -1,31 +1,31 @@
 import { Page, Locator, expect } from "@playwright/test";
 
-export class Cart {
+export class cart {
   private readonly page: Page;
-  private readonly RemoveFirstItemBTN: Locator;
-  private readonly RemoveSecondItemBTN: Locator;
-  private readonly CheckOutBTN: Locator;
+  private readonly removeFirstItemBTN: Locator;
+  private readonly removeSecondItemBTN: Locator;
+  private readonly checkOutBTN: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.RemoveFirstItemBTN = page.locator("#remove-sauce-labs-backpack");
-    this.RemoveSecondItemBTN = page.locator("#remove-test\\.allthethings\\(\\)-t-shirt-\\(red\\)");
-    this.CheckOutBTN = page.locator("#checkout");
+    this.removeFirstItemBTN = page.locator("#remove-sauce-labs-backpack");
+    this.removeSecondItemBTN = page.locator("#remove-test\\.allthethings\\(\\)-t-shirt-\\(red\\)");
+    this.checkOutBTN = page.locator("#checkout");
   }
 
-  async CheckItems(): Promise<void> {
-    await expect(this.RemoveFirstItemBTN).toBeVisible();
-    await expect(this.RemoveSecondItemBTN).toBeVisible();
+  async checkItems(): Promise<void> {
+    await expect(this.removeFirstItemBTN).toBeVisible();
+    await expect(this.removeSecondItemBTN).toBeVisible();
   }
 
-  async RemoveItem(): Promise<void> {
-    await this.RemoveFirstItemBTN.click();
+  async removeItem(): Promise<void> {
+    await this.removeFirstItemBTN.click();
   }
-  async CheckRemovedItem(): Promise<void> {
-    await expect(this.RemoveFirstItemBTN).toHaveCount(0);
+  async checkRemovedItem(): Promise<void> {
+    await expect(this.removeFirstItemBTN).toHaveCount(0);
   }
 
-  async GoToInfo(): Promise<void> {
-    this.CheckOutBTN.click();
+  async goToInfo(): Promise<void> {
+    this.checkOutBTN.click();
   }
 }

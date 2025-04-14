@@ -1,21 +1,21 @@
 import { Page, Locator, expect } from "@playwright/test";
 
-export class SuccessfulMSG {
+export class successfulMSG {
   private readonly page: Page;
-  private readonly SuccessfulMSG: Locator;
-  private readonly BackHomeBTN: Locator;
+  private readonly successMSG: Locator;
+  private readonly backHomeBTN: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.SuccessfulMSG = page.locator("#checkout_complete_container");
-    this.BackHomeBTN = page.locator("#back-to-products");
+    this.successMSG = page.locator("#checkout_complete_container");
+    this.backHomeBTN = page.locator("#back-to-products");
   }
 
-  async Sucessful(): Promise<void> {
-    await expect(this.SuccessfulMSG).toHaveCount(1);
+  async sucessful(): Promise<void> {
+    await expect(this.successMSG).toHaveCount(1);
   }
 
-  async GoBackHome(): Promise<void> {
-    await this.BackHomeBTN.click();
+  async goBackHome(): Promise<void> {
+    await this.backHomeBTN.click();
   }
 }

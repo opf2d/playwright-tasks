@@ -1,20 +1,20 @@
 import { Page, Locator, expect } from "@playwright/test";
 
-export class Overview {
+export class overview {
   private readonly page: Page;
-  private readonly Verify: Locator;
-  private readonly FinishBTN: Locator;
+  private readonly verify: Locator;
+  private readonly finishBTN: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.Verify = page.locator("#item_3_title_link");
-    this.FinishBTN = page.locator("#finish");
+    this.verify = page.locator("#item_3_title_link");
+    this.finishBTN = page.locator("#finish");
   }
 
-  async CheckData(): Promise<void> {
-    await expect(this.Verify).toHaveCount(0);
+  async checkData(): Promise<void> {
+    await expect(this.verify).toHaveCount(0);
   }
-  async GoToComplete(): Promise<void> {
-    await this.FinishBTN.click();
+  async goToComplete(): Promise<void> {
+    await this.finishBTN.click();
   }
 }

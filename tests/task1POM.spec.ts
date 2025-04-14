@@ -1,11 +1,11 @@
 import { test } from '@playwright/test';
-import { LoginVerifications } from '../Pages/login.spec.ts';
+import { loginVerifications } from '../Pages/login.spec.ts';
 
 test.describe('Login Test Cases', () => {
-  let loginPage: LoginVerifications;
+  let loginPage: loginVerifications;
 
   test.beforeEach('Navigate to login page', async ({ page }) => {
-    loginPage = new LoginVerifications(page);
+    loginPage = new loginVerifications(page);
     await loginPage.goToURL();
   });
 
