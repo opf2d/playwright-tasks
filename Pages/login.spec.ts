@@ -8,8 +8,8 @@ export class LoginVerifications {
   private readonly errorMessage: Locator;
 
   constructor(page: Page) {
-    this.page = page; // Initialize page
-    this.userName = page.locator('#user-name'); // Use shorthand ID selector
+    this.page = page;
+    this.userName = page.locator('#user-name'); 
     this.passWord = page.locator('#password');
     this.loginBtn = page.locator('#login-button');
     this.errorMessage = page.locator('[data-test="error"]');
