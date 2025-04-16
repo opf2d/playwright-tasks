@@ -1,31 +1,32 @@
-import { Page, Locator, expect } from "@playwright/test";
+import { Page, Locator } from '@playwright/test';
+import { BasePage } from './base';
 
-export class Cart {
-  private readonly page: Page;
+export class Cart extends BasePage {
   private readonly removeFirstItemBTN: Locator;
   private readonly removeSecondItemBTN: Locator;
   private readonly checkOutBTN: Locator;
 
   constructor(page: Page) {
-    this.page = page;
-    this.removeFirstItemBTN = page.locator("#remove-sauce-labs-backpack");
-    this.removeSecondItemBTN = page.locator("#remove-test\\.allthethings\\(\\)-t-shirt-\\(red\\)");
-    this.checkOutBTN = page.locator("#checkout");
+    super(page);
+    this.removeFirstItemBTN = page.locator('#remove-sauce-labs-backpack');
+    this.removeSecondItemBTN = page.locator('#remove-test\\.allthethings\\(\\)-t-shirt-\\(red\\)');
+    this.checkOutBTN = page.locator('#checkout');
   }
 
   async checkItems(): Promise<void> {
-    await expect(this.removeFirstItemBTN).toBeVisible();
-    await expect(this.removeSecondItemBTN).toBeVisible();
+    await this.verifyElementVisibility(this.removeFirstItemBTN);
+    await this.verifyElementVisibility(this.removeSecondItemBTN);
   }
 
   async removeItem(): Promise<void> {
-    await this.removeFirstItemBTN.click();
+    await this.clickElement(this.removeFirstItemBTN);
   }
+
   async checkRemovedItem(): Promise<void> {
-    await expect(this.removeFirstItemBTN).toHaveCount(0);
+    await this.verifyElementPresence(this.removeFirstItemBTN, false);
   }
+
   async goToInfo(): Promise<void> {
-    this.checkOutBTN.click();
+    await this.navigate(this.checkOutBTN);
   }
 }
-
