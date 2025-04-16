@@ -13,7 +13,7 @@ export class Overview extends BasePage {
   }
 
   async checkData(): Promise<void> {
-    await this.verifyElementPresence(this.verify, false);
+    await this.verifyElementPresence(this.verify, true);
   }
 
   async goToComplete(): Promise<void> {

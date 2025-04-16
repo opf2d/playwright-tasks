@@ -1,14 +1,6 @@
-<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="5.888076">
-<testsuite name="task1POM.spec.ts" timestamp="2025-04-16T08:56:11.668Z" hostname="chromium" tests="1" failures="0" skipped="0" time="2.73" errors="0">
-<testcase name="Login Test Cases › Verify logging in successfully" classname="task1POM.spec.ts" time="2.73">
-<system-out>
-<![CDATA[Account is valid
-]]>
-</system-out>
-</testcase>
-</testsuite>
-<testsuite name="task2.spec.ts" timestamp="2025-04-16T08:56:11.668Z" hostname="chromium" tests="1" failures="0" skipped="0" time="3.711" errors="0">
-<testcase name="Login Test Cases › Full Buying Process test" classname="task2.spec.ts" time="3.711">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="4.465445">
+<testsuite name="task2.spec.ts" timestamp="2025-04-16T14:00:30.357Z" hostname="chromium" tests="1" failures="0" skipped="0" time="2.903" errors="0">
+<testcase name="Login Test Cases › Full Buying Process test" classname="task2.spec.ts" time="2.903">
 </testcase>
 </testsuite>
 </testsuites>
