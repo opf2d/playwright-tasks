@@ -1,6 +1,6 @@
 import { Page, Locator, expect } from "@playwright/test";
 
-export class successfulMSG {
+export class SuccessfulMSG {
   private readonly page: Page;
   private readonly successMSG: Locator;
   private readonly backHomeBTN: Locator;

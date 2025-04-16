@@ -1,6 +1,6 @@
 import { Page, Locator, expect } from "@playwright/test";
 
-export class overview {
+export class Overview {
   private readonly page: Page;
   private readonly verify: Locator;
   private readonly finishBTN: Locator;

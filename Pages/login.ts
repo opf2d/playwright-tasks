@@ -1,6 +1,6 @@
 import { Page, Locator, expect } from '@playwright/test';
 
-export class loginVerifications {
+export class LoginVerifications {
   private readonly page: Page;
   private readonly userName: Locator;
   private readonly passWord: Locator;
@@ -25,15 +25,32 @@ export class loginVerifications {
       await this.loginBtn.click();
   }
 
-  async validAccount(): Promise<void> {
-    await expect(this.page).toHaveURL('/inventory.html');
-  }
-
-  async invalidAccount(): Promise<void> {
-    await expect(this.errorMessage).toHaveText(/.*do not match any/);
-  }
-
-  async lockedAccount(): Promise<void> {
-    await expect(this.errorMessage).toHaveText(/.*locked out/);
+  async checkAccountStatus(): Promise<'valid' | 'invalid' | 'locked' | 'unknown'> {
+    // Check for valid account by URL
+    try {
+      await expect(this.page).toHaveURL(/.*inventory\.html/, { timeout: 5000 });
+      return 'valid';
+    } catch {
+      // URL does not match, proceed to check error message
+    }
+  
+    // Check for invalid account
+    try {
+      await expect(this.errorMessage).toHaveText(/.*do not match any/, { timeout: 5000 });
+      return 'invalid';
+    } catch {
+      // Invalid account message not found, proceed to check locked account
+    }
+  
+    // Check for locked account
+    try {
+      await expect(this.errorMessage).toHaveText(/.*locked out/, { timeout: 5000 });
+      return 'locked';
+    } catch {
+      // Locked account message not found, return unknown
+    }
+  
+    // Fallback for unexpected cases
+    return 'unknown';
   }
 }

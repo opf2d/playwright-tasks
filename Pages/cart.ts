@@ -1,6 +1,6 @@
 import { Page, Locator, expect } from "@playwright/test";
 
-export class cart {
+export class Cart {
   private readonly page: Page;
   private readonly removeFirstItemBTN: Locator;
   private readonly removeSecondItemBTN: Locator;
@@ -24,7 +24,6 @@ export class cart {
   async checkRemovedItem(): Promise<void> {
     await expect(this.removeFirstItemBTN).toHaveCount(0);
   }
-
   async goToInfo(): Promise<void> {
     this.checkOutBTN.click();
   }

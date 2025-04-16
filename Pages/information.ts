@@ -1,6 +1,6 @@
 import { Page, Locator, expect } from "@playwright/test";
 
-export class information {
+export class Information {
   private readonly page: Page;
   private readonly firstName: Locator;
   private readonly lastName: Locator;

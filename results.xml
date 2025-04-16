@@ -1,0 +1,10 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="3.2135659999999997">
+<testsuite name="task1POM.spec.ts" timestamp="2025-04-16T08:07:28.412Z" hostname="chromium" tests="1" failures="0" skipped="0" time="1.622" errors="0">
+<testcase name="Login Test Cases › Verify logging in successfully" classname="task1POM.spec.ts" time="1.622">
+<system-out>
+<![CDATA[Account is valid
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>
