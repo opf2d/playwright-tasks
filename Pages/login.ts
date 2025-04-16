@@ -1,56 +1,55 @@
-import { Page, Locator, expect } from '@playwright/test';
+import { Page, Locator } from '@playwright/test';
+import { BasePage } from './base';
 
-export class LoginVerifications {
-  private readonly page: Page;
+export class LoginVerifications extends BasePage {
   private readonly userName: Locator;
   private readonly passWord: Locator;
   private readonly loginBtn: Locator;
   private readonly errorMessage: Locator;
 
   constructor(page: Page) {
-    this.page = page;
-    this.userName = page.locator('#user-name'); 
+    super(page);
+    this.userName = page.locator('#user-name');
     this.passWord = page.locator('#password');
     this.loginBtn = page.locator('#login-button');
     this.errorMessage = page.locator('[data-test="error"]');
   }
 
-  async goToURL(): Promise<void> {
-    await this.page.goto('/');
-  }
-
   async login(username: string, password: string): Promise<void> {
-      await this.userName.fill(username);
-      await this.passWord.fill(password);
-      await this.loginBtn.click();
+    const fields = new Map<Locator, string>([
+      [this.userName, username],
+      [this.passWord, password],
+    ]);
+    await this.fillForm(fields);
+    await this.clickElement(this.loginBtn);
   }
 
   async checkAccountStatus(): Promise<'valid' | 'invalid' | 'locked' | 'unknown'> {
-    // Check for valid account by URL
     try {
-      await expect(this.page).toHaveURL(/.*inventory\.html/, { timeout: 5000 });
+      await this.verifyURL(/.*inventory\.html/);
       return 'valid';
     } catch {
-      // URL does not match, proceed to check error message
+      // URL does not match
     }
-  
-    // Check for invalid account
+
     try {
-      await expect(this.errorMessage).toHaveText(/.*do not match any/, { timeout: 5000 });
+      await this.verifyElementText(this.errorMessage, /.*do not match any/);
       return 'invalid';
     } catch {
-      // Invalid account message not found, proceed to check locked account
+      // Invalid account message not found
     }
-  
-    // Check for locked account
+
     try {
-      await expect(this.errorMessage).toHaveText(/.*locked out/, { timeout: 5000 });
+      await this.verifyElementText(this.errorMessage, /.*locked out/);
       return 'locked';
     } catch {
-      // Locked account message not found, return unknown
+      // Locked account message not found
     }
-  
-    // Fallback for unexpected cases
+
     return 'unknown';
+  }
+
+  async goToURL(): Promise<void> {
+    await this.navigate('/');
   }
 }

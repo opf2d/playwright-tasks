@@ -28,3 +28,4 @@ export class Cart {
     this.checkOutBTN.click();
   }
 }
+
