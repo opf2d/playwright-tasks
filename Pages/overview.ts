@@ -1,21 +1,22 @@
-import { Page, Locator, expect } from "@playwright/test";
 
-export class Overview {
-  private readonly page: Page;
+import { Page, Locator } from '@playwright/test';
+import { BasePage } from './base';
+
+export class Overview extends BasePage {
   private readonly verify: Locator;
   private readonly finishBTN: Locator;
 
   constructor(page: Page) {
-    this.page = page;
-    this.verify = page.locator("#item_3_title_link");
-    this.finishBTN = page.locator("#finish");
+    super(page);
+    this.verify = page.locator('#item_3_title_link');
+    this.finishBTN = page.locator('#finish');
   }
 
   async checkData(): Promise<void> {
-    await expect(this.verify).toHaveCount(0);
+    await this.verifyElementPresence(this.verify, false);
   }
+
   async goToComplete(): Promise<void> {
-    await this.finishBTN.click();
+    await this.navigate(this.finishBTN);
   }
 }
-
