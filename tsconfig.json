@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+      "target": "esnext",
+      "module": "commonjs",
+      "strict": true,
+      "esModuleInterop": true,
+      "rootDir": ".",
+      "outDir": "./dist",
+      "lib": ["dom", "esnext"],
+      "types": ["node", "@playwright/test", "playwright-bdd"],
+      "moduleResolution": "node"
+    },
+    "include": [
+      "features/**/*.ts",
+      "steps/**/*.ts",
+      "pages/**/*.ts",
+      "tests/**/*.ts"
+    ],
+    "exclude": [
+      ".features-gen",
+      "dist",
+      "node_modules"
+    ]
+  }
