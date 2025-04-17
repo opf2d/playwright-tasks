@@ -1,6 +1,6 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="4.465445">
-<testsuite name="task2.spec.ts" timestamp="2025-04-16T14:00:30.357Z" hostname="chromium" tests="1" failures="0" skipped="0" time="2.903" errors="0">
-<testcase name="Login Test Cases › Full Buying Process test" classname="task2.spec.ts" time="2.903">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="3.967284">
+<testsuite name="task2.spec.ts" timestamp="2025-04-17T13:19:06.242Z" hostname="chromium" tests="1" failures="0" skipped="0" time="2.243" errors="0">
+<testcase name="Full Buying Process test › Buying 2 elements" classname="task2.spec.ts" time="2.243">
 </testcase>
 </testsuite>
 </testsuites>

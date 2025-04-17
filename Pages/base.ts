@@ -41,4 +41,26 @@ export abstract class BasePage {
   async verifyElementVisibility(locator: Locator): Promise<void> {
     await expect(locator).toBeVisible();
   }
+
+  async getClass(locator: Locator): Promise<string> {
+    const classValue = await locator.getAttribute('class');
+    return classValue ?? '';  // Default to empty string if null
+  }
+  
+  
+  async verifyUnorderedMatch(locatorA: Locator, locatorB: Locator): Promise<void> {
+    const extractTexts = async (locator: Locator): Promise<string[]> => {
+      const count = await locator.count();
+      const texts = [];
+      for (let i = 0; i < count; i++) {
+        texts.push((await locator.nth(i).innerText()).trim());
+      }
+      return texts.sort(); // order doesn't matter
+    };
+  
+    const listA = await extractTexts(locatorA);
+    const listB = await extractTexts(locatorB);
+  
+    await expect(listA).toEqual(listB);
+  }
 }

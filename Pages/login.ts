@@ -6,6 +6,8 @@ export class LoginVerifications extends BasePage {
   private readonly passWord: Locator;
   private readonly loginBtn: Locator;
   private readonly errorMessage: Locator;
+  readonly mainPageUrl: string; 
+
 
   constructor(page: Page) {
     super(page);
@@ -13,6 +15,7 @@ export class LoginVerifications extends BasePage {
     this.passWord = page.locator('#password');
     this.loginBtn = page.locator('#login-button');
     this.errorMessage = page.locator('[data-test="error"]');
+    this.mainPageUrl = '/';
   }
 
   async login(username: string, password: string): Promise<void> {

@@ -2,10 +2,10 @@ import { Page, Locator } from '@playwright/test';
 import { BasePage } from './base';
 
 export class Information extends BasePage {
-  private readonly firstName: Locator;
-  private readonly lastName: Locator;
-  private readonly zipCode: Locator;
-  private readonly continueBTN: Locator;
+  readonly firstName: Locator;
+  readonly lastName: Locator;
+  readonly zipCode: Locator;
+  readonly continueBTN: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -22,9 +22,5 @@ export class Information extends BasePage {
       [this.zipCode, zCode.toString()],
     ]);
     await this.fillForm(fields);
-  }
-
-  async goToOverview(): Promise<void> {
-    await this.navigate(this.continueBTN);
   }
 }

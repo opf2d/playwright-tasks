@@ -1,9 +1,9 @@
 import { Page, Locator } from '@playwright/test';
 import { BasePage } from './base';
 
-export class SuccessfulMSG extends BasePage {
-  private readonly successMSG: Locator;
-  private readonly backHomeBTN: Locator;
+export class Complete extends BasePage {
+  readonly successMSG: Locator;
+  readonly backHomeBTN: Locator;
 
   constructor(page: Page) {
     super(page);

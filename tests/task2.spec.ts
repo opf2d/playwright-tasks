@@ -4,40 +4,44 @@ import { ProductSelection } from "../Pages/products";
 import { Cart } from "../Pages/cart";
 import { Information } from "../Pages/information";
 import { Overview } from "../Pages/overview";
-import { SuccessfulMSG } from "../Pages/complete";
+import { Complete } from "../Pages/complete";
+import { describe } from "node:test";
 
-test.describe("Login Test Cases", () => {
+test.describe("Full Buying Process test", () => {
   let loginPage: LoginVerifications;
-  let addingItems: ProductSelection;
-  let theBasket: Cart;
-  let formFilling: Information;
-  let overviewCheck: Overview;
-  let finish: SuccessfulMSG;
+  let productPage: ProductSelection;
+  let cartPage: Cart;
+  let informationPage: Information;
+  let overviewPage: Overview;
+  let completePage: Complete;
+  let mainPage: URL;
 
   test.beforeEach("Navigate to login page", async ({ page }) => {
     loginPage = new LoginVerifications(page);
-    addingItems = new ProductSelection(page);
-    theBasket = new Cart(page);
-    formFilling = new Information(page);
-    overviewCheck = new Overview(page);
-    finish = new SuccessfulMSG(page);
-    await loginPage.goToURL();
+    productPage = new ProductSelection(page);
+    cartPage = new Cart(page);
+    informationPage = new Information(page);
+    overviewPage = new Overview(page);
+    completePage = new Complete(page);
+    await loginPage.navigate('/');
   });
 
-  test("Full Buying Process test", async () => {
+  test("Buying 2 elements", async () => {
     await loginPage.login("standard_user", "secret_sauce");
-    await loginPage.checkAccountStatus();
-    await addingItems.addItem();
-    await addingItems.goToCart();
-    await theBasket.checkItems();
-    await theBasket.removeItem();
-    await theBasket.checkRemovedItem();
-    await theBasket.goToInfo();
-    await formFilling.myInformation("Fouad", "Lathqani", 1234);
-    await formFilling.goToOverview();
-    await overviewCheck.checkData();
-    await overviewCheck.goToComplete();
-    await finish.sucessful();
-    await finish.goBackHome();
+    await loginPage.verifyURL(/.*inventory\.html/);
+    await productPage.addItem();
+    await productPage.navigate(productPage.basket);
+    await cartPage.verifyUnorderedMatch(productPage.firstItemTitle, cartPage.firstItemTitle);
+    await cartPage.verifyUnorderedMatch(productPage.lastItemTitle, cartPage.lastItemTitle);
+    await cartPage.checkItems();
+    await cartPage.clickElement(cartPage.removeFirstItemButton);
+    await cartPage.verifyElementPresence(cartPage.removeFirstItemButton, false);
+    await cartPage.navigate(cartPage.checkOutButton);
+    await informationPage.myInformation("Fouad", "Lathqani", 1234);
+    await informationPage.navigate(informationPage.continueBTN);
+    await overviewPage.verifyElementPresence(overviewPage.verify, true);
+    await overviewPage.navigate(overviewPage.finishBTN);
+    await completePage.verifyElementPresence(completePage.successMSG, true);
+    await completePage.navigate(completePage.backHomeBTN);
   });
 }); 

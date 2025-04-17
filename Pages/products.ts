@@ -2,25 +2,36 @@ import { Page, Locator } from '@playwright/test';
 import { BasePage } from './base';
 
 export class ProductSelection extends BasePage {
-  private readonly addToCartButtons: Locator;
-  private readonly firstItemBTN: Locator;
-  private readonly lastItemBTN: Locator;
-  private readonly basket: Locator;
+  readonly firstItemTitle: Locator;
+  readonly lastItemTitle: Locator;
+  readonly firstItemPrice: Locator;
+  readonly lastItemPrice: Locator;
+  readonly firstItemDescription: Locator;
+  readonly lastItemDescription: Locator;
+  readonly firstItemButton: Locator;
+  readonly lastItemButton: Locator;
+  readonly basket: Locator;
 
   constructor(page: Page) {
     super(page);
-    this.addToCartButtons = page.locator('[id^="add-to-cart-"]');
-    this.firstItemBTN = this.addToCartButtons.nth(0);
-    this.lastItemBTN = this.addToCartButtons.last();
-    this.basket = page.locator('.shopping_cart_link');
+
+    const titles = page.locator('[data-test="inventory-item-name"]');
+    const prices = page.locator('[data-test="inventory-item-price"]');
+    const descriptions = page.locator('[data-test="inventory-item-desc"]');
+    const buttons = page.locator('[class="btn btn_primary btn_small btn_inventory "]');
+    this.firstItemTitle = titles.first();
+    this.lastItemTitle = titles.last();
+    this.firstItemPrice = prices.first();
+    this.lastItemPrice = prices.last();
+    this.firstItemDescription = descriptions.first();
+    this.lastItemDescription = descriptions.last();
+    this.firstItemButton = buttons.first();
+    this.lastItemButton = buttons.last();
+    this.basket = page.locator('[data-test="shopping-cart-link"]');
   }
 
   async addItem(): Promise<void> {
-    await this.clickElement(this.firstItemBTN);
-    await this.clickElement(this.lastItemBTN);
-  }
-
-  async goToCart(): Promise<void> {
-    await this.navigate(this.basket);
+    await this.clickElement(this.firstItemButton);
+    await this.clickElement(this.lastItemButton);
   }
 }
