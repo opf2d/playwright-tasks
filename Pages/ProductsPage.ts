@@ -1,5 +1,5 @@
 import { Page, Locator } from "@playwright/test";
-import { BasePage } from "./base";
+import { BasePage } from "./Base";
 
 export class ProductPage extends BasePage {
   readonly firstItemTitle: Locator;
@@ -10,6 +10,7 @@ export class ProductPage extends BasePage {
   readonly lastItemDescription: Locator;
   readonly firstItemButton: Locator;
   readonly lastItemButton: Locator;
+  readonly cartBadge: Locator;
   readonly basket: Locator;
   readonly titles: Locator;
   readonly prices: Locator;
@@ -31,6 +32,7 @@ export class ProductPage extends BasePage {
     this.firstItemButton = buttons.first();
     this.lastItemButton = buttons.last();
     this.basket = page.locator('[data-test="shopping-cart-link"]');
+    this.cartBadge = page.locator('[data-test="shopping-cart-badge"]');
     this.productSort = page.locator('[data-test="product-sort-container"]');
   }
 

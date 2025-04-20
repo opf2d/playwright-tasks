@@ -1,5 +1,5 @@
 import { Page, Locator } from '@playwright/test';
-import { BasePage } from './base';
+import { BasePage } from './Base';
 
 export class Overview extends BasePage {
   readonly verify: Locator;
