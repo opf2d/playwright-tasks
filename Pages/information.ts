@@ -5,14 +5,14 @@ export class Information extends BasePage {
   readonly firstName: Locator;
   readonly lastName: Locator;
   readonly zipCode: Locator;
-  readonly continueBTN: Locator;
+  readonly continueButton: Locator;
 
   constructor(page: Page) {
     super(page);
     this.firstName = page.locator('#first-name');
     this.lastName = page.locator('#last-name');
     this.zipCode = page.locator('#postal-code');
-    this.continueBTN = page.locator('#continue');
+    this.continueButton = page.locator('#continue');
   }
 
   async myInformation(fName: string, lName: string, zCode: number): Promise<void> {

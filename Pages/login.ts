@@ -4,18 +4,19 @@ import { BasePage } from './base';
 export class LoginVerifications extends BasePage {
   private readonly userName: Locator;
   private readonly passWord: Locator;
-  private readonly loginBtn: Locator;
+  private readonly loginButton: Locator;
   private readonly errorMessage: Locator;
   readonly mainPageUrl: string; 
-
+  readonly dashBoardUrl: string;
 
   constructor(page: Page) {
     super(page);
     this.userName = page.locator('#user-name');
     this.passWord = page.locator('#password');
-    this.loginBtn = page.locator('#login-button');
+    this.loginButton = page.locator('#login-button');
     this.errorMessage = page.locator('[data-test="error"]');
     this.mainPageUrl = '/';
+    this.dashBoardUrl = 'https://www.saucedemo.com/inventory.html';
   }
 
   async login(username: string, password: string): Promise<void> {
@@ -24,7 +25,7 @@ export class LoginVerifications extends BasePage {
       [this.passWord, password],
     ]);
     await this.fillForm(fields);
-    await this.clickElement(this.loginBtn);
+    await this.clickElement(this.loginButton);
   }
 
   async checkAccountStatus(): Promise<'valid' | 'invalid' | 'locked' | 'unknown'> {
@@ -50,9 +51,5 @@ export class LoginVerifications extends BasePage {
     }
 
     return 'unknown';
-  }
-
-  async goToURL(): Promise<void> {
-    await this.navigate('/');
   }
 }

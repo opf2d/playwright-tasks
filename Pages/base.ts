@@ -1,14 +1,14 @@
-import { Page, Locator, expect } from '@playwright/test';
+import { Page, Locator, expect } from "@playwright/test";
 
 export abstract class BasePage {
-  protected readonly page: Page;
+  public readonly page: Page;
 
   constructor(page: Page) {
     this.page = page;
   }
 
   async navigate(locatorOrURL: Locator | string): Promise<void> {
-    if (typeof locatorOrURL === 'string') {
+    if (typeof locatorOrURL === "string") {
       await this.page.goto(locatorOrURL);
     } else {
       await locatorOrURL.click();
@@ -19,7 +19,7 @@ export abstract class BasePage {
     await expect(this.page).toHaveURL(expectedURL, { timeout: 5000 });
   }
 
-   async verifyElementText(locator: Locator, expectedText: string | RegExp): Promise<void> {
+  async verifyElementText(locator: Locator, expectedText: string | RegExp): Promise<void> {
     await expect(locator).toHaveText(expectedText);
   }
 
@@ -43,11 +43,10 @@ export abstract class BasePage {
   }
 
   async getClass(locator: Locator): Promise<string> {
-    const classValue = await locator.getAttribute('class');
-    return classValue ?? '';  // Default to empty string if null
+    const classValue = await locator.getAttribute("class");
+    return classValue ?? ""; // Default to empty string if null
   }
-  
-  
+
   async verifyUnorderedMatch(locatorA: Locator, locatorB: Locator): Promise<void> {
     const extractTexts = async (locator: Locator): Promise<string[]> => {
       const count = await locator.count();
@@ -57,10 +56,36 @@ export abstract class BasePage {
       }
       return texts.sort(); // order doesn't matter
     };
-  
+
     const listA = await extractTexts(locatorA);
     const listB = await extractTexts(locatorB);
-  
+
     await expect(listA).toEqual(listB);
+  }
+
+  async sortingNameAsec(titles:Locator): Promise<void> {
+    const titlesText = await titles.allTextContents(); 
+    const titlesSorted = [...titlesText].sort((a,b) => a.localeCompare(b));
+    expect(titlesText).toEqual(titlesSorted);
+  }
+
+  async sortingNameDsec(titles: Locator): Promise<void> {
+  const titlesText = await titles.allTextContents();    
+  const titlesSorted = titlesText.sort((a,b) => b.localeCompare(a));
+  await expect(titlesText).toEqual(titlesSorted);
+  }
+
+  async sortingPriceAsec(prices: Locator): Promise<void> {
+  const pricesText = await prices.allTextContents();
+  const pricesNumbers = pricesText.map(price => parseFloat(price.replace('$', '').trim()));
+  const pricesSorted = [...pricesNumbers].sort((a,b) => a - b);
+  expect(pricesNumbers).toEqual(pricesSorted);
+  }
+
+  async sortingPriceDsec(prices: Locator): Promise<void> {
+    const pricesText = await prices.allTextContents();
+    const pricesNumbers = pricesText.map(price => parseFloat(price.replace('$', '').trim()));
+    const pricesSorted = [...pricesNumbers].sort((a,b) => b - a);
+    expect(pricesNumbers).toEqual(pricesSorted);
   }
 }

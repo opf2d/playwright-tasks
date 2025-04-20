@@ -1,7 +1,7 @@
 import { Page, Locator } from '@playwright/test';
 import { BasePage } from './base';
 
-export class Cart extends BasePage {
+export class CartPage extends BasePage {
   readonly firstItemTitle: Locator;
   readonly lastItemTitle: Locator;
   readonly firstItemPrice: Locator;
