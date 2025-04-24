@@ -1,0 +1,241 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "login-test;login-operation-was-valid",
+        "keyword": "Scenario Outline",
+        "line": 11,
+        "name": "Login operation was valid",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "User navigates to the website",
+            "match": {
+              "location": "tests/steps/login.steps.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2463667004
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 4,
+            "name": "User enters the username as \"standard_user\"",
+            "match": {
+              "location": "tests/steps/login.steps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 60075641
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "User enters the password as \"secret_sauce\"",
+            "match": {
+              "location": "tests/steps/login.steps.ts:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 17609608
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "User clicks on Login button",
+            "match": {
+              "location": "tests/steps/login.steps.ts:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 103978917
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "Login operation must be \"valid\"",
+            "match": {
+              "location": "tests/steps/login.steps.ts:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 23019236
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "login-test;login-operation-was-valid",
+        "keyword": "Scenario Outline",
+        "line": 12,
+        "name": "Login operation was valid",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "User navigates to the website",
+            "match": {
+              "location": "tests/steps/login.steps.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1866918714
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 4,
+            "name": "User enters the username as \"hakuna\"",
+            "match": {
+              "location": "tests/steps/login.steps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 126429140
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "User enters the password as \"matata\"",
+            "match": {
+              "location": "tests/steps/login.steps.ts:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 44405346
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "User clicks on Login button",
+            "match": {
+              "location": "tests/steps/login.steps.ts:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 72103852
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "Login operation must be \"invalid\"",
+            "match": {
+              "location": "tests/steps/login.steps.ts:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 11196026
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "login-test;login-operation-was-valid",
+        "keyword": "Scenario Outline",
+        "line": 13,
+        "name": "Login operation was valid",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "User navigates to the website",
+            "match": {
+              "location": "tests/steps/login.steps.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1815613389
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 4,
+            "name": "User enters the username as \"locked_out_user\"",
+            "match": {
+              "location": "tests/steps/login.steps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 65239084
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "User enters the password as \"secret_sauce\"",
+            "match": {
+              "location": "tests/steps/login.steps.ts:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 24234669
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "User clicks on Login button",
+            "match": {
+              "location": "tests/steps/login.steps.ts:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 152302381
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "Login operation must be \"locked\"",
+            "match": {
+              "location": "tests/steps/login.steps.ts:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 9292584
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "login-test",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Login test",
+    "tags": [],
+    "uri": "tests/features/login.feature"
+  }
+]

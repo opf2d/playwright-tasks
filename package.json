@@ -1,0 +1,38 @@
+{
+  "name": "bddplaywright",
+  "version": "1.0.0",
+  "description": "BDD testing project using Playwright, Cucumber, and TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:bdd": "cucumber-js",
+    "test:headed": "npx playwright test --headed",
+    "codegen": "npx playwright codegen",
+    "build": "tsc",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "playwright",
+    "cucumber",
+    "typescript",
+    "bdd",
+    "e2e-testing"
+  ],
+  "author": "",
+  "license": "ISC",
+  "directories": {
+    "test": "tests"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.2.0",
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.14.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "playwright": "^1.52.0",
+    "playwright-core": "^1.52.0",
+    "undici-types": "^6.21.0"
+  }
+}
