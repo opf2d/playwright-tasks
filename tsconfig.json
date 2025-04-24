@@ -119,5 +119,5 @@
     // "skipDefaultLibCheck": true,                      /* Skip checking default lib.d.ts files. */
     // "skipLibCheck": true                                 /* Skip type checking for all declaration files. */
   },
-  "include": ["steps/**/*.ts", "tests/**/*.ts"]
+  "include": ["tests/steps/**/*.ts", "tests/**/*.ts"]
 }
