@@ -1,0 +1,6 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="4.880729">
+<testsuite name="task2.spec.ts" timestamp="2025-04-20T12:50:07.142Z" hostname="chromium" tests="1" failures="0" skipped="0" time="2.781" errors="0">
+<testcase name="Full Buying Process test › Buying 2 elements" classname="task2.spec.ts" time="2.781">
+</testcase>
+</testsuite>
+</testsuites>
